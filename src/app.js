@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const url=["http://192.168.29.45:3000","http://localhost:3000","https://xc-ui-be.onrender.com","https://xplocode.vercel.app"]
 
 require('./config/passport');
 
@@ -14,7 +15,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: url,
     credentials: true
   })
 );
