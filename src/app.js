@@ -9,9 +9,15 @@ require('./config/passport');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
+const userRoutes = require("./routes/userRoutes");
+
+app.use("/api/users", userRoutes);
 
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use("/api/user", userRoutes);
 
 app.use(
   cors({

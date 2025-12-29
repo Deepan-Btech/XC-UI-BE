@@ -1,14 +1,12 @@
-const { generateToken } = require('../utils/token');
+const { generateToken } = require("../utils/token");
 
 exports.googleSuccess = (req, res) => {
-  const token = generateToken(req.user._id);
+  const token = generateToken(req.user);
 
-  res.cookie('token', token, {
-    httpOnly: true,
-    secure: false, // true in production
-    sameSite: 'lax',
-    maxAge: 7 * 24 * 60 * 60 * 1000
-  });
+  console.log("JWT TOKEN:", token); // 🔴 ADD THIS LINE
 
-  res.redirect(`${process.env.FRONTEND_URL}/login-success`);
+  res.redirect(
+    `${process.env.FRONTEND_URL}/?token=${encodeURIComponent(token)}`
+  );
 };
+
